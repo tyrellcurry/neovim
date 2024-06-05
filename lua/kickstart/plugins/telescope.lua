@@ -56,12 +56,28 @@ return {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          -- Specify default configurations for Telescope
+          file_ignore_patterns = { '.git/', 'node_modules/', 'vendor/' }, -- Add patterns of ignored files/folders
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden', -- Include hidden files
+            '--glob',
+            '!**/.git/*', -- Exclude .git directory
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true, -- Include hidden files in the find_files picker
+            no_ignore = false, -- Respect .gitignore files
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
