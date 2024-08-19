@@ -49,3 +49,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Custom keymaps
+
+-- Diagnosis open in a floating window
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = 'Show diagnostic [L]ist' })
+
+-- Set '<leader>y' to yank to clipboard
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>y', '"+y')
+-- Set '<leader>p' to paste from clipboard
+vim.keymap.set('v', '<leader>p', '"+p')
+vim.keymap.set('n', '<leader>p', '"+p')
+vim.keymap.set('v', '<leader>P', '"+P')
+vim.keymap.set('n', '<leader>P', '"+P')
+
+-- Map delete to save in 'a' register
+vim.keymap.set({ 'n', 'v' }, 'd', '"ad', { noremap = true })
+vim.keymap.set('n', 'dd', '"add', { noremap = true })
+vim.keymap.set('v', 'd', '"ad', { noremap = true })
+vim.keymap.set('n', '<leader>P', '"+P')
+
+-- Map yank to save in 'a' register
+vim.keymap.set({ 'n', 'v' }, 'y', '"ay', { noremap = true })
+
+-- Map paste to paste from 'a' register
+vim.keymap.set('n', 'p', '"ap', { noremap = true })
+vim.keymap.set('v', 'p', '"ap', { noremap = true })
+vim.keymap.set('n', 'P', '"aP', { noremap = true })
+vim.keymap.set('v', 'P', '"aP', { noremap = true })
