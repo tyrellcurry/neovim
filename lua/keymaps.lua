@@ -76,3 +76,6 @@ vim.keymap.set('n', 'p', '"ap', { noremap = true })
 vim.keymap.set('v', 'p', '"ap', { noremap = true })
 vim.keymap.set('n', 'P', '"aP', { noremap = true })
 vim.keymap.set('v', 'P', '"aP', { noremap = true })
+
+-- Open TODOs
+vim.keymap.set('n', '<leader>td', '<cmd>TodoTelescope<CR>', { desc = 'Open [T]o[D]os' })
