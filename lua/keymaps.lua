@@ -62,6 +62,10 @@ vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', '<leader>P', '"+P')
 vim.keymap.set('n', '<leader>P', '"+P')
 
+-- Map change (c) to use the black hole register so it doesn't save deleted text
+vim.keymap.set({ 'n', 'v' }, 'c', '"_c', { noremap = true })
+vim.keymap.set('n', 'cc', '"_cc', { noremap = true })
+
 -- Map delete to save in 'a' register
 vim.keymap.set({ 'n', 'v' }, 'd', '"ad', { noremap = true })
 vim.keymap.set('n', 'dd', '"add', { noremap = true })
