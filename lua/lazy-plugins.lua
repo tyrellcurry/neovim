@@ -49,9 +49,9 @@ require('lazy').setup({
 
   require 'kickstart/plugins/treesitter',
 
-  require 'custom/plugins/auto-session',
+  -- require 'custom/plugins/auto-session',
 
-  require 'custom/plugins/copilot',
+  -- require 'custom/plugins/copilot',
 
   require 'custom/plugins/harpoon',
 

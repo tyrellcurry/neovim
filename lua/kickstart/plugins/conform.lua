@@ -33,8 +33,27 @@ return {
         -- is found.
         javascript = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
+        css = { { 'prettierd', 'prettier' } },
+        scss = { { 'prettierd', 'prettier' } },
+        html = { { 'prettierd', 'prettier' } },
+        json = { { 'prettierd', 'prettier' } },
+        yaml = { { 'prettierd', 'prettier' } },
+        markdown = { { 'prettierd', 'prettier' } },
       },
     },
+    config = function(_, opts)
+      local conform = require 'conform'
+
+      conform.setup(opts)
+
+      -- Customize prettier's behavior
+      conform.formatters.prettier = {
+        -- This tells conform.nvim to look for the .prettierrc file
+        prepend_args = { '--config-precedence', 'prefer-file' },
+      }
+    end,
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
