@@ -14,5 +14,6 @@ map alt+right send_text all \x1b\x66\
 
 include ./theme.conf
 map cmd+d new_window
+background_image ~/.config/kitty/images/bg.png
+background_image_layout cscaled
 # map kitty_mod+n new_os_window
-

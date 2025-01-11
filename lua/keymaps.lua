@@ -84,3 +84,7 @@ vim.keymap.set('n', '<leader>g', ':%y+<CR>', { desc = 'Yank entire buffer to cli
 
 -- Open TODOs
 vim.keymap.set('n', '<leader>td', '<cmd>TodoTelescope<CR>', { desc = 'Open [T]o[D]os' })
+
+-- Remap shift + up/down to avoid annoying jumps:
+vim.keymap.set('n', '<S-Down>', 'zz', { desc = 'Center text after moving down' })
+vim.keymap.set('n', '<S-Up>', 'zz', { desc = 'Center text after moving up' })
