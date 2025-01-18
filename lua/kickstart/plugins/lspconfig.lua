@@ -199,6 +199,7 @@ return {
       -- Add specific settings for `typescript-tools` if needed
       require('typescript-tools').setup {
         -- You can add any additional configuration here for the TypeScript tools
+        capabilities = capabilities, -- Pass updated capabilities
         settings = {
           tsserver_file_preferences = {
             includeInlayParameterNameHints = 'all',
@@ -228,9 +229,10 @@ return {
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            if server_name == 'tsserver' then
+              return
+            end -- Skip tsserver
             local server = servers[server_name] or {}
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
