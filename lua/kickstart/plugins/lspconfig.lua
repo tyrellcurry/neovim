@@ -19,6 +19,21 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
         opts = {},
       },
+      {
+        'nvimtools/none-ls.nvim', -- fork of null-ls
+        dependencies = {
+          'nvim-lua/plenary.nvim',
+          'nvimtools/none-ls-extras.nvim',
+        },
+        config = function()
+          local null_ls = require 'null-ls'
+          null_ls.setup {
+            sources = {
+              require 'none-ls.diagnostics.eslint_d',
+            },
+          }
+        end,
+      },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -223,9 +238,9 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'eslint_d',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
