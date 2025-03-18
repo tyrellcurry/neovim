@@ -88,3 +88,13 @@ vim.keymap.set('n', '<leader>td', '<cmd>TodoTelescope<CR>', { desc = 'Open [T]o[
 -- Remap shift + up/down to avoid annoying jumps:
 vim.keymap.set('n', '<S-Down>', 'zz', { desc = 'Center text after moving down' })
 vim.keymap.set('n', '<S-Up>', 'zz', { desc = 'Center text after moving up' })
+
+-- Insert mode: Map to <Nop> to disable
+vim.keymap.set('i', '<S-Up>', '<Nop>', { noremap = true })
+vim.keymap.set('i', '<PageUp>', '<Nop>', { noremap = true })
+vim.keymap.set('i', '<S-Down>', '<Nop>', { noremap = true })
+vim.keymap.set('i', '<PageDown>', '<Nop>', { noremap = true })
+
+-- Visual mode: Map to <Nop> to disable
+vim.keymap.set('v', '<S-Up>', '<Nop>', { noremap = true })
+vim.keymap.set('v', '<S-Down>', '<Nop>', { noremap = true })
