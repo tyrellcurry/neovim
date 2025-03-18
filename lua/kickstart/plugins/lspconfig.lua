@@ -205,6 +205,7 @@ return {
             },
           },
         },
+        tailwindcss = {},
       }
       -- Setup each server with its config
       for server, config in pairs(servers) do
