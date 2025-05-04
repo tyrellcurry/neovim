@@ -224,6 +224,13 @@ return {
             importModuleSpecifierPreference = 'non-relative',
           },
         },
+        tsserver_plugins = {
+          -- Enable the styled components plugin
+          {
+            name = '@styled/typescript-styled-plugin',
+            location = 'node_modules/@styled/typescript-styled-plugin',
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
