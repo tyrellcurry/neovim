@@ -1,9 +1,9 @@
--- Load general vim configuration
-require 'custom.config.options'
-require 'custom.config.keymaps'
-require 'custom.config.auto-commands'
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- Bootstrap and setup lazy.nvim
-require 'custom.config.lazy'
+vim.g.have_nerd_font = true
 
--- vim: ts=2 sts=2 sw=2 et
+require 'globals'
+require 'options'
+require 'keymaps'
+require 'lazy-init'
