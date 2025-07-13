@@ -16,7 +16,6 @@ return {
         },
       },
       -- Enable debug mode to see what's happening
-      -- test
       debug = true,
     }
   end,
