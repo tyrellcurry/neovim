@@ -243,6 +243,7 @@ return {
         'delve',
         'docker-compose-language-service',
         'dockerfile-language-server',
+        'emmet_ls',
         'eslint-lsp',
         'hadolint',
         'intelephense',

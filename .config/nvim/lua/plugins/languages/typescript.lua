@@ -7,6 +7,21 @@ return {
       servers = {
         --- @deprecated -- tsserver renamed to ts_ls but not yet released, so keep this for now
         --- the proper approach is to check the nvim-lspconfig release version when it's released to determine the server name dynamically
+        emmet_ls = {
+          filetypes = {
+            'html',
+            'typescriptreact',
+            'javascriptreact',
+            'css',
+            'sass',
+            'scss',
+            'less',
+            'javascript',
+            'typescript',
+            'markdown',
+            'ejs',
+          },
+        },
         tsserver = {
           enabled = false,
         },
@@ -58,12 +73,15 @@ return {
                 local position_params = vim.lsp.util.make_position_params()
                 local params = {
                   command = 'typescript.goToSourceDefinition',
-                  arguments = { position_params.textDocument.uri, position_params.position },
+                  arguments = {
+                    position_params.textDocument.uri,
+                    position_params.position,
+                  },
                 }
-                require("trouble").open({
-                  mode = "lsp_command",
+                require('trouble').open {
+                  mode = 'lsp_command',
                   params = params,
-                })
+                }
               end,
               desc = 'Goto Source Definition',
             },
@@ -74,10 +92,10 @@ return {
                   command = 'typescript.findAllFileReferences',
                   arguments = { vim.uri_from_bufnr(0) },
                 }
-                require("trouble").open({
-                  mode = "lsp_command",
+                require('trouble').open {
+                  mode = 'lsp_command',
                   params = params,
-                })
+                }
               end,
               desc = 'File References',
             },
@@ -175,7 +193,7 @@ return {
             end
           end
           local name = 'vtsls'
-          vim.api.nvim_create_autocmd("LspAttach", {
+          vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(args)
               local buffer = args.buf ---@type number
               local client = vim.lsp.get_client_by_id(args.data.client_id)
