@@ -82,16 +82,26 @@ return {
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map(
-            '<leader>ca',
-            vim.lsp.buf.code_action,
-            'Code Action',
-            { 'n', 'x' }
-          )
+          map('<tab>', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+
+          -- Open floating diagnostic window (focusable)
+          map('<leader>fd', function()
+            local float_opts = {
+              focusable = true,
+              scope = 'cursor',
+              border = 'rounded',
+              style = 'minimal',
+              source = 'always',
+            }
+            local bufnr, winnr = vim.diagnostic.open_float(float_opts)
+            if winnr then
+              vim.api.nvim_set_current_win(winnr)
+            end
+          end, 'Open Floating Diagnostic')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
