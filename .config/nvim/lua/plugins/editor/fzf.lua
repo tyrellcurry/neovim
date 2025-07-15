@@ -68,10 +68,10 @@ return {
     dependencies = { 'echasnovski/mini.icons' },
     opts = {
       files = {
-        fd_opts = '--color=never --type f --hidden --follow',
+        fd_opts = '--color=never --type f --follow --exclude .git',
       },
       grep = {
-        rg_opts = '--column --line-number --hidden',
+        rg_opts = '--column --line-number --hidden --glob "!.git"',
       },
     },
     keys = {
@@ -90,7 +90,15 @@ return {
         desc = 'Buffers',
       },
       { '<leader>sf', '<cmd>FzfLua files<cr>', desc = 'Files' },
-      { '<leader><space>', '<cmd>FzfLua files<cr>', desc = 'Find Files' },
+      {
+        '<leader><space>',
+        function()
+          require('fzf-lua').files {
+            fd_opts = '--color=never --type f --hidden --follow',
+          }
+        end,
+        desc = 'Find Files (with hidden)',
+      },
       { '<leader>fg', '<cmd>FzfLua git_files<cr>', desc = 'Git-files' },
 
       -- search

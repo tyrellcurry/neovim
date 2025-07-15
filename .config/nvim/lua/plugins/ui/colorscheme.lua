@@ -15,21 +15,20 @@ return {
     },
   },
   {
-    'catppuccin/nvim',
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      require('catppuccin').setup {
-        flavour = 'auto',
-        background = {
-          light = 'latte',
-          dark = 'mocha',
+      require('tokyonight').setup {
+        transparent = true,
+        styles = {
+          comments = { italic = true },
+          sidebars = 'transparent',
+          floats = 'transparent',
         },
-        transparent_background = true,
-        term_colors = true,
       }
 
-      vim.cmd [[colorscheme catppuccin]]
+      vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
 }
